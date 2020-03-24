@@ -15,6 +15,7 @@
         <nav class="main-nav">
             <ul>
                 <li><a href="/index.html">Home</a></li>
+                <li class="divider-nav-link">|</li>
                 <li><a href="/about.html">About</a></li>
             </ul>
         </nav>
@@ -23,12 +24,30 @@
 
         <form>
             <label for="artist_search"></label>
-            <input type="text" placeholder="Enter artist name" id="artist_search" name="artist_search" required>
+            <input type="text" placeholder="Enter artist name" id="artist_search" name="artist_search" autocomplete="off" required>
         </form>
 
+
+        <div class="row">
+            <div class="column">
+                <h2>About</h2>
+                <p> The site analyzes the sentiment (mood) of the albums from the user inputted artist. One will be able to see how 
+                    the mood changes from album to album and where each song is in the scale. </p>
+            </div> 
+
+            <div class="column">
+                <h2>Where does the data come from?</h2>
+                <p> The data used comes from the Spotify API valence value which Spotify describes it as, "A measure from 0.0 to 1.0 
+                    describing the musical positiveness conveyed by a track. Tracks with high valence sound more positive (e.g. happy, 
+                    cheerful, euphoric), while tracks with low valence sound more negative (e.g. sad, depressed, angry)." The polarity 
+                    of each song is analyzed using TextBlob, a Python library for processing textual data, to get the sentiment value 
+                    which basically means determining the attitude or emotion of the artist.</p>
+            </div>
+        </div>
         
         <footer>
             <a href="https://github.com/cesarg01"><span aria-label="github" class="fa fa-github"></span></a>
+
         </footer>
         
 
