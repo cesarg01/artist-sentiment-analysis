@@ -1,0 +1,22 @@
+{% extends 'moods/layout.html' %}
+
+
+{% block search %}
+<form method="POST" id="my_form">
+    
+    <label for="artist_search"></label>
+    {% csrf_token %}
+    <input type="text" placeholder="Enter artist name" id="artist_search" name="artist_search" autocomplete="off" required>
+    <input type="submit">
+</form>
+
+{% endblock search %}
+
+
+
+    
+
+<h1>{{ artist_name }}</h1>
+
+<p>Albums: </p>
+
