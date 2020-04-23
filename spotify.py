@@ -77,6 +77,8 @@ class Spotify:
         
         albums = []
         seen = set()
+        counter = 0
+        MAX_LIMIT = 2
         # Get the albums names and filter out unnecessary albums (Delux, remixes, etc.)
         print('Printing out the name of the whole album followed by the album id.\n')
         for item in results:
@@ -86,12 +88,20 @@ class Spotify:
 
             if name in seen or '(' in name:
                 continue
-            seen.add(name)
-        # NOTE: This only creates one album. To create all the albums we must put this inside the for loop
+            if counter < MAX_LIMIT:
+                seen.add(name)
+                counter += 1
+                # NOTE: This only creates one album. To create all the albums we must put this inside the for loop
         # above.
-            songs = self.get_songs(album_id)
-            album = self.create_album(name, songs)
-            albums.append(album)
+                songs = self.get_songs(album_id)
+                album = self.create_album(name, songs)
+                # NOTE: This a temporary fix when genius doesn't have lyrics. Should fix song_scraper file.
+                if(len(album['songs']) == 0):
+                    continue
+                else:
+                    albums.append(album)
+            else:
+                break
             
         return albums
 
@@ -109,8 +119,12 @@ class Spotify:
             'name': name,
             'songs': songs
         }
-        album['sentiment'] = total / len(songs)
-        print('Length of album is ', len(songs))
+        if(len(songs) == 0):
+            print('Album has no songs and album name is ' + name)
+
+        else:
+            album['sentiment'] = total / len(songs)
+            print('Length of album is ', len(songs))
         
             
         #print(songs[0]['energy'])
@@ -203,7 +217,7 @@ class Spotify:
         return songs
 
 
-sp = Spotify()
-results = sp.get_artist('saint asonia')
+#sp = Spotify()
+#results = sp.get_artist('saint asonia')
 
-print(results)
+#print(results)

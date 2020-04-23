@@ -1,22 +1,38 @@
 {% extends 'moods/layout.html' %}
 
 
+
 {% block search %}
+
 <form method="POST" id="my_form">
-    
     <label for="artist_search"></label>
     {% csrf_token %}
-    <input type="text" placeholder="Enter artist name" id="artist_search" name="artist_search" autocomplete="off" required>
+    <input type="text" placeholder="Enter artist name"  name="artist_search" autocomplete="off" required>
     <input type="submit">
 </form>
 
+
+<h1 class="artist_name">{{ artist_name }}</h1>
+
+<!--
+{% for song in results %}
+    <p>{{ song.name }}</p>
+
+{% endfor %}
+-->
+
+<canvas id="myChart" width="800" height="800"></canvas>
+
+<div id="my-data" data-album="{{ new|safe }}"></div>
+<!--
+<div id="myvar">{{ results | safe }}</div>
+-->
+
+<!--Scripts-->
+<script type="text/javascript">
+    var artistData = '{{ artist_data | safe }}';
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 {% endblock search %}
-
-
-
-    
-
-<h1>{{ artist_name }}</h1>
-
-<p>Albums: </p>
 
