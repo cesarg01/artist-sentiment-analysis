@@ -1,7 +1,6 @@
 # Artist Sentiment Analysis
-
-
-Python program that will allow the user to input the artist or band they want to see and check where they will be playing.
+Project that analyzes the sentiment (mood) of the albums from the user inputted artist. One will be able to see how 
+the mood changes from album to album and where each song is in the scale (Happy, Neutral, or Dark).
 
 ## Updates
 There is a graph not showing up issue when searching for artists who have 10+ songs in their albums. This issue could be fixed by
